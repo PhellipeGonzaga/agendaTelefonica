@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="ListaTelefonica">
+
+<head>
+	<title>Lista Telefonica</title>
+	<script src="./lib/angular.min.js"></script>
+	<script src="./js/app.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/app.css">
+</head>
+
+<body ng-controller="ListaTelefonicaController">
+
+	<div class="jumbotron">
+		<h4> {{app}}</h4>
+		<input class="form-control" type="text" ng-model="buscaUsuario" placeholder="Busca" />
+		<table class="table table-striped">
+			<tr>
+				<th></th>
+				<th><a href="" ng-click="ordenarCampo('nome')">Nome</a></th>
+				<th><a href="" ng-click="ordenarCampo('telefone')">Telefone</a></th>
+				<th>Operadora</th>
+				<th>Data</th>
+			</tr>
+			<tr ng-class="{selecionado: contato.selecionado}" ng-repeat=" contato in contatos | filter: buscaUsuario | orderBy:campOrder:tipoOrdenacao">
+				<td><input type="checkbox" ng-model="contato.selecionado"></td>
+				<td> {{contato.nome }} </td>
+				<td> {{contato.telefone}} </td>
+				<td> {{contato.operadora.nome | uppercase}} </td>
+				<td> {{contato.data | date:'dd/MM/yyyy'}} </td>
+			</tr>
+		</table>
+		<hr/>
+		<form name="contatoForm">
+			<input class="form-control" type="text" ng-model="contato.nome" name="nome" placeholder="Nome" ng-required="true" ng-minlength="8"
+			/>
+			<input class="form-control" type="text" ng-model="contato.telefone" name="telefone" placeholder="Telefone" ng-pattern="/^\d{4,5}-\d{4}$/"
+			 ng-required="true" />
+			<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras">
+				<option value="">Selecione...</option>
+			</select>
+		</form>
+		<div ng-show="contatoForm.nome.$error.nome && contatoForm.nome.$dirty" class="alert alert-danger">
+			Por favor preencha nome!
+		</div>
+		<div ng-show="contatoForm.nome.$error.minlength" class="alert alert-danger">
+			O campo tem que ter minimo 8 caracteres
+		</div>
+		<div ng-show="contatoForm.telefone.$error.nome && contatoForm.telefone.$dirty" class="alert alert-danger">
+			Por favor preencha o telefone !
+		</div>
+		<div ng-show="contatoForm.telefone.$error.pattern" class="alert alert-danger">
+			O campo telefone deve ser preenchido no formato DDDDD-DDDD
+		</div>
+		<button class="btn btn-primary btn-block" ng-click="addContato(contato)" ng-disabled="!contatoForm.$valid ">Salvar Contato</button>
+		<button class="btn btn-danger btn-block" ng-click="deleteContatos(contatos)" ng-if="IsContatoSelecionado(contatos)">Apaga Contato</button>
+	</div>
+	<!-- <div ng-include="'Footer.html'"></div> -->
+	<div style="text-align: center;"> Criado por Phellipe</div>
+</body>
+
+</html>
