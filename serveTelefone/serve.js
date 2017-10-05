@@ -12,7 +12,8 @@ var operadoras = [
 
 var contatos = [
     { nome: "Phellipe", telefone: "1231-1233", data: new Date(), operadora: { nome: "Vivo", codigo: "16", categoria: "Celular" } },
-    { nome: "Mariane", telefone: "1231-1233", data: new Date(), operadora: { nome: "Vivo", codigo: "16", categoria: "Celular" } }
+    { nome: "Mariane", telefone: "5555-5555", data: new Date(), operadora: { nome: "OI", codigo: "22", categoria: "Celular" } },
+    { nome: "Lucia", telefone: "8888-8888", data: new Date(), operadora: { nome: "Claro", codigo: "25", categoria: "Celular" } }
 ];
 
 
