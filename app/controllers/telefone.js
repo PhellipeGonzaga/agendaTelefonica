@@ -15,6 +15,12 @@ app.controller("TelefonesCtrl", function ($scope, $http, $scope, Telefone, ngPro
 		});
 	};
 
+	$scope.remove = function(telefone) {
+		telefone.$delete(function(){
+		  refresh();
+		});
+	  };
+
 	function getAll() {
 		$scope.contatos = Telefone.query();
 	}

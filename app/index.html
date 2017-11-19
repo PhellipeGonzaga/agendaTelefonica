@@ -13,7 +13,7 @@
     <input class="form-control" type="text" ng-model="buscaUsuario" placeholder="Busca" />
     <table class="table table-striped">
       <tr>
-        <th></th>
+        <th>ID</th>
         <th>
           <a href="" ng-click="ordenarCampo('nome')">Nome</a>
         </th>
@@ -22,15 +22,16 @@
         </th>
         <th>Operadora</th>
         <th>Data</th>
+        <th>Acoes</th>
       </tr>
       <tr ng-class="{selecionado: contato.selecionado}" ng-repeat=" contato in contatos | filter: buscaUsuario | orderBy:campOrder:tipoOrdenacao">
-        <td>
-          <input type="checkbox" ng-model="contato.selecionado">
-        </td>
+        
+        <td> {{contato._id }} </td>
         <td> {{contato.nome }} </td>
         <td> {{contato.telefone}} </td>
         <td> {{contato.operadora.nome | uppercase}} </td>
         <td> {{contato.data | date:'dd/MM/yyyy'}} </td>
+        <td><button class="btn btn-danger btn-block" ng-click="remove(contato)">Apaga Contato</button></td>
       </tr>
     </table>
     <hr/>
@@ -56,7 +57,7 @@
       O campo telefone deve ser preenchido no formato DDDDD-DDDD
     </div>
     <button class="btn btn-primary" ng-click="add(contato)" type="submit" ng-disabled="!contatoForm.$valid ">Salvar Contato</button>
-    <button class="btn btn-danger btn-block" ng-click="deleteContatos(contatos)" ng-if="IsContatoSelecionado(contatos)">Apaga Contato</button>
+    
   </div>
 
   <script src="/vendors/angular.min.js"></script>
