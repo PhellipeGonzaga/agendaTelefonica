@@ -52,4 +52,19 @@ var creatRouter = function (port) {
 
 }
 
-module.exports = creatRouter;
+// Dependencies
+var express = require('express');
+var router = express.Router();
+
+//Operadoras
+var Operadoras = require('./models/operadora');
+Operadoras.methods(['get', 'put', 'post', 'delete']);
+Operadoras.register(router, '/operadoras');
+
+//Telefone
+var Telefones = require('./models/telefone');
+Telefones.methods(['get', 'put', 'post', 'delete']);
+Telefones.register(router, '/telefones');
+
+// Return router
+module.exports = router;
