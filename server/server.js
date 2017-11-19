@@ -14,13 +14,14 @@ mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL || connectionURL);
 // Express
 var app = express();
 
-app.use(express.static(__dirname + '/app'));
+
+app.use(express.static(__dirname + '/../app'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api', require('./server/router'));
+app.use('/api', require('./router'));
 
 // Start server
 var port = process.env.OPENSHIFT_NODEJS_PORT || 8080
