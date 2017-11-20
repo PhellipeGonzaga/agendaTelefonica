@@ -6,7 +6,8 @@ var mongoose = restful.mongoose;
 var telefoneSchema = new mongoose.Schema({
     nome: String,
     telefone: String,
-    data: Date
+    data: Date,
+    operadora: Object
 });
 
 // Return model

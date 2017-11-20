@@ -24,14 +24,14 @@
         <th>Data</th>
         <th>Acoes</th>
       </tr>
-      <tr ng-class="{selecionado: contato.selecionado}" ng-repeat=" contato in contatos | filter: buscaUsuario | orderBy:campOrder:tipoOrdenacao">
-        
+      <tr ng-class="{selecionado: contato.selecionado}" ng-repeat=" contato in contatos | filter: buscaUsuario | orderBy:campOrder:tipoOrdenacao">       
         <td> {{contato._id }} </td>
         <td> {{contato.nome }} </td>
         <td> {{contato.telefone}} </td>
         <td> {{contato.operadora.nome | uppercase}} </td>
         <td> {{contato.data | date:'dd/MM/yyyy'}} </td>
         <td><button class="btn btn-danger btn-block" ng-click="remove(contato)">Apaga Contato</button></td>
+        <td><button class="btn btn-warning btn-block" ng-click="populateForm(contato)">Editar Contato</button></td>
       </tr>
     </table>
     <hr/>
@@ -40,7 +40,7 @@
       />
       <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" placeholder="Telefone" ng-pattern="/^\d{4,5}-\d{4}$/"
         ng-required="true" />
-      <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras">
+      <select class="form-control" ng-model="contato.operadora.codigo" ng-options="operadora.codigo as operadora.nome for operadora in operadoras">
         <option value="">Selecione...</option>
       </select>
     </form>
@@ -56,8 +56,7 @@
     <div ng-show="contatoForm.telefone.$error.pattern" class="alert alert-danger">
       O campo telefone deve ser preenchido no formato DDDDD-DDDD
     </div>
-    <button class="btn btn-primary" ng-click="add(contato)" type="submit" ng-disabled="!contatoForm.$valid ">Salvar Contato</button>
-    
+    <button class="btn btn-primary" ng-click="salvar(contato)" type="submit" ng-disabled="!contatoForm.$valid ">Salvar Contato</button>
   </div>
 
   <script src="/vendors/angular.min.js"></script>
