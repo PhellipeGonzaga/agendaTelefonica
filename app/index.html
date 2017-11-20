@@ -58,6 +58,8 @@
     </div>
     <button class="btn btn-primary" ng-click="salvar(contato)" type="submit" ng-disabled="!contatoForm.$valid ">Salvar Contato</button>
   </div>
+	<div data-loading></div>
+  <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>	
 
   <script src="/vendors/angular.min.js"></script>
   <script src="/vendors/angular-resource.min.js"></script>
@@ -66,8 +68,6 @@
   <script src="/vendors/toaster.js"></script>
   <script src="/app.js"></script>
   <script src="/directives/loading.js"></script>
-  <script src="/factories/operadoras.js"></script>
-  <script src="/controllers/operadoras.js"></script>
   <script src="/factories/telefones.js"></script>
   <script src="/controllers/telefone.js"></script>
 </body>
