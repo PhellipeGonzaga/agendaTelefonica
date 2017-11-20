@@ -11,15 +11,15 @@ app.controller("TelefonesCtrl", function ($scope, $http, $scope, Telefone, ngPro
 
 	$scope.salvar = function (contato){
 		contato.data = new Date();
-
-		contato.operadora = $scope.operadoras.find(function (c) {
-			if (c.codigo===contato.operadora.codigo) return true;
-		});
-
-		if(contato._id === null){
-			add(contato);
-		}else{
+		
+				contato.operadora = $scope.operadoras.find(function (c) {
+					if (c.codigo===contato.operadora.codigo) return true;
+				});
+				
+		if (contato.hasOwnProperty('_id')) {
 			update(contato);
+		} else {
+			add(contato);
 		}
 	}
 
@@ -31,16 +31,16 @@ app.controller("TelefonesCtrl", function ($scope, $http, $scope, Telefone, ngPro
 
 	function update(contato) {
 		contato.$update(function(){
-		  refresh();
+			refresh();
 		});
-	  };
+	};
 
 	$scope.remove = function (telefone) {
 		telefone.$delete(function () {
 			refresh();
 		});
 	};
-	
+
 	$scope.populateForm = function(contato) {
 		$scope.contato = Telefone.get({ id: contato._id });
 	};
