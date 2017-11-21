@@ -33,7 +33,8 @@
         <td> {{contato.operadora.nome | uppercase}} </td>
         <td> {{contato.data | date:'dd/MM/yyyy'}} </td>
         <td>
-          <button class="btn btn-danger" ng-click="remove(contato)">Apagar</button>
+          <button class="btn btn-danger" ng-confirm-click="Voce quer remover o Contato?" confirmed-click="remove(contato)">Apgar</button>
+          <!-- <button class="btn btn-danger" ng-click="remove(contato)">Apagar</button> -->
           <button class="btn btn-warning" ng-click="populateForm(contato)">Editar</button>
         </td>
       </tr>
