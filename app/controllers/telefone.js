@@ -52,8 +52,17 @@ app.controller("TelefonesCtrl", function ($scope, $http, $scope, Telefone, ngPro
 	function refresh() {
 		getAll();
 		//Implement methods that control the page for each action
-		//clearFields();
+		clearFields();
 		//disableButtons();
+	}
+
+	function clearFields(){
+		$scope.contato = {};
+	}
+
+	$scope.ordenarCampo = function (campo){
+		$scope.campOrder = campo;
+		$scope.tipoOrdenacao = !$scope.tipoOrdenacao;
 	}
 
 	function init() {
