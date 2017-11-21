@@ -3,7 +3,7 @@
 }
 
 .jumbotron{
-    width: 600px;
+    width: 1200x;
     text-align: center;
     margin-top: 20px; 
     margin-right: auto;
@@ -16,4 +16,7 @@
     background-color: yellow;
 }
 
+td,th{
+    text-align: center;
+}
 
