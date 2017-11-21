@@ -3,7 +3,7 @@
 }
 
 .jumbotron{
-    width: 1200x;
+    width: 1000px;
     text-align: center;
     margin-top: 20px; 
     margin-right: auto;
@@ -12,11 +12,10 @@
 .form-control{
     margin-bottom: 5px;
 }
-.selecionado{
-    background-color: yellow;
-}
+
 
 td,th{
     text-align: center;
 }
+
 
